@@ -41,7 +41,7 @@ def cityscale_data_partition():
 
 def spacenet_data_partition():
     # dataset partition
-    with open('./spacenet/data_split.json','r') as jf:
+    with open('/content/sam_road/spacenet/data_split.json','r') as jf:
         data_list = json.load(jf)
         # data_list = data_list['test'] + data_list['validation'] + data_list['train']
     # train_list = [tile_index for _, tile_index in data_list['train']]
