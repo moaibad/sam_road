@@ -109,6 +109,11 @@ def infer_one_img(net, img, config):
     fused_keypoint_mask = (fused_keypoint_mask * 255).to(torch.uint8).cpu().numpy()
     fused_road_mask = (fused_road_mask * 255).to(torch.uint8).cpu().numpy()
 
+    # # Gamma Correction
+    gamma = 1.0 
+    inv_gamma = 1.0 / gamma
+    fused_road_mask = (255 * (fused_road_mask / 255.0)**inv_gamma).astype(np.uint8)
+
     # ## Astar graph extraction
     # pred_graph = graph_extraction.extract_graph_astar(fused_keypoint_mask, fused_road_mask, config)
     # # Doing this conversion to reuse copied code
